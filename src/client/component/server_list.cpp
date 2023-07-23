@@ -154,8 +154,8 @@ namespace server_list
 				return address.type != game::NA_BAD;
 			}
 		}
-
-		address = network::address_from_string("127.0.0.1"); //DEFAULT MASTER SERVER ADDRESS FOR SERVER LIST
+	
+		address = network::address_from_string("master.efg-en.net:20810"); //DEFAULT MASTER SERVER ADDRESS FOR SERVER LIST
 		return address.type != game::NA_BAD;
 	}
 
