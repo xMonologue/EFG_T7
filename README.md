@@ -27,7 +27,7 @@ The Steam version of Black Ops 3 is required to be owned and installed for BOIII
 We do not own the original code, it is based on the original boiii.
 
 ## Note:
-Just like ezz boii. We have our own master server! Thank to @skwll fromn ezz. Find their discord down below
+Just like ezz boii. We have our own master server! Thank to @skwll fromn ezz and @dontknowletsplay for saving the original code. Find their discord down below
 
 ## ezz discord:
 discord.gg/ezz
