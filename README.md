@@ -9,7 +9,7 @@
 EFG T7 is a game modification for Call of Duty: Black Ops 3 based on boiii.  
 The Steam version of Black Ops 3 is required to be owned and installed for BOIII to work. You can get it from <a href="https://store.steampowered.com/app/311210/Call_of_Duty_Black_Ops_III/">here</a>.
 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeSXYzQITJrcjiifN1nqX1fsVE7VwLZ3vl2g&usqp=CAU">
+<img src="https://cdn.discordapp.com/attachments/623352372998963233/1131209997724942457/EFG_Black_Logo_512x512.gif">
 
 ## Writeups & Articles
 
