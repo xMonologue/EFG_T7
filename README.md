@@ -11,13 +11,13 @@ The Steam version of Black Ops 3 is required to be owned and installed for BOIII
 
 <img src="https://cdn.discordapp.com/attachments/623352372998963233/1131209997724942457/EFG_Black_Logo_512x512.gif">
 
-## Find the BO3 game files here
+## Find the BO3 game files here (We heavily encourage you to buy the game)
 https://forum.ezz.lol/topic/5/bo3-guide
 
 ## HOW TO INSTALL:
 - Download the game via steam or the link up this line
 - Download the EFG_T7.exe (Place it in your bo3 root folder)
-- Unzip the T7EFGF folder found in releases and place it in /appdata/local/
+- Unzip the T7EFG folder found in releases and place it in /appdata/local/
 - Run the game and enjoy!
 
 
