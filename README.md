@@ -16,9 +16,9 @@ https://forum.ezz.lol/topic/5/bo3-guide
 
 ## HOW TO INSTALL:
 - Download the game via steam or the link up this line
-- Download the EFG_T7.exe (Place it in your bo3 root folder)
-- Download the discord dll folder, unzip it and put it in the bo3 root folder
-- Unzip the T7EFG folder found in releases and place it in /appdata/local/ (Make sure its on your window user, type ```%appdata%``` in your window search bar located on your desktop) ex. ```C:\Users\TestMachine\AppData\Local```
+- Download the ```EFG_T7.exe``` (Place it in your bo3 root folder)
+- Download the ```discord dll folder```, unzip it and put it in the ```bo3 root folder```
+- Unzip the ```T7EFG folder``` found in releases and place it in /appdata/local/ (Make sure its on your window user, type ```%appdata%``` in your window search bar located on your desktop) ex. ```C:\Users\TestMachine\AppData\Local```
 - Run the game and enjoy!
 
 
