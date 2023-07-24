@@ -11,6 +11,16 @@ The Steam version of Black Ops 3 is required to be owned and installed for BOIII
 
 <img src="https://cdn.discordapp.com/attachments/623352372998963233/1131209997724942457/EFG_Black_Logo_512x512.gif">
 
+## Find the BO3 game files here
+https://forum.ezz.lol/topic/5/bo3-guide
+
+## HOW TO INSTALL:
+- Download the game via steam or the link up this line
+- Download the EFG_T7.exe (Place it in your bo3 root folder)
+- Unzip the T7EFGF folder found in releases and place it in /appdata/local/
+- Run the game and enjoy!
+
+
 ## Writeups & Articles
 
 - <a href="https://momo5502.com/posts/2022-11-17-reverse-engineering-integrity-checks-in-black-ops-3/">Reverse engineering integrity checks in Black Ops 3</a>
@@ -18,19 +28,13 @@ The Steam version of Black Ops 3 is required to be owned and installed for BOIII
 
 
 ##ORIGNAL DEVS
-## Credits
-
+## Note & Credits
 - Thanks to <a href="https://github.com/shiversoftdev">@shiversoftdev</a> for providing the fixes from his <a href="https://github.com/shiversoftdev/t7patch">community patch</a>
+- Thank to @skwll fromn ezz and @dontknowletsplay for saving the original code. Find their discord down below
+- Just like ezz boii. We have our own master server! So join now! (Its our own master server, not the one from EZZ's client)
 
 ## Disclaimer
-
-We do not own the original code, it is based on the original boiii.
-
-## Note & Credits:
-Just like ezz boii. We have our own master server! Thank to @skwll fromn ezz and @dontknowletsplay for saving the original code. Find their discord down below
-
-## Find the BO3 game files here
-https://forum.ezz.lol/topic/5/bo3-guide
+We do not own the original code, it is based on the original boiii. All the base code goes back to @momo5502
 
 ## ezz discord:
 discord.gg/ezz
