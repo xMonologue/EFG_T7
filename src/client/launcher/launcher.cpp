@@ -7,11 +7,33 @@
 #include <game/game.hpp>
 #include <utils/string.hpp>
 
+#include <iostream>
+#include <string>
+#include <windows.h>
+
 namespace launcher
 {
+	std::filesystem::path get_local_appdata_path()
+	{
+		static const auto appdata_path = []
+		{
+			PWSTR path;
+			if (FAILED(SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, nullptr, &path)))
+			{
+				throw std::runtime_error("Failed to read APPDATA path!");
+			}
+
+			static auto appdata = std::filesystem::path(path);
+			return appdata;
+		}();
+
+		return appdata_path;
+	}
+
 	bool run()
 	{
 		bool run_game = true;
+
 		/*html_window window("T7 EFG", 550, 320);
 
 		window.get_html_frame()->register_callback(
@@ -41,6 +63,26 @@ namespace launcher
 			utils::string::va("file:///%s", get_launcher_ui_file().generic_string().data()));
 
 		window::run();*/
+
+		//make files for steam and discord requirements just in case
+		std::filesystem::path cache = get_local_appdata_path() / "cache/cache.bin";
+		
+		std::ofstream myFile(cache);
+		if (myFile)
+		{
+			myFile << " "; 
+			myFile.close(); 
+		}
+
+		std::filesystem::path data = get_local_appdata_path() / "cache/data.bin";
+
+		std::ofstream datafile(data);
+		if (datafile)
+		{
+			datafile << " "; 
+			datafile.close();
+		}
+
 		return run_game;
 	}
 
