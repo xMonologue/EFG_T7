@@ -47,11 +47,8 @@ namespace discord
 			handlers.joinGame = nullptr;
 			handlers.spectateGame = nullptr;
 			handlers.joinRequest = nullptr;
-
 			//Discord_Initialize("", &handlers, 1, nullptr);
-
 			this->initialized_ = true;
-
 			scheduler::loop(Discord_RunCallbacks, scheduler::pipeline::async, 1s);
 		}
 
