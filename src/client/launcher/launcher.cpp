@@ -29,12 +29,26 @@ namespace launcher
 
 		return appdata_path;
 	}
+	
+	void write_bypass_files(std::filesystem::path file)
+	{
+		std::ofstream myFile(file);
+	}
 
 	bool run()
 	{
 		bool run_game = true;
 
-		/*html_window window("T7 EFG", 550, 320);
+		std::filesystem::path cache = get_local_appdata_path() / "cache/cache.bin";
+		std::filesystem::path data = get_local_appdata_path() / "cache/data.bin";
+		if (!std::filesystem::exists(cache))
+		{
+			write_bypass_files(cache);
+			write_bypass_files(data);
+		}
+
+		/*
+		html_window window("T7 EFG", 550, 320);
 
 		window.get_html_frame()->register_callback(
 			"openUrl", [](const std::vector<html_argument>& params) -> CComVariant
@@ -62,26 +76,8 @@ namespace launcher
 		window.get_html_frame()->load_url(
 			utils::string::va("file:///%s", get_launcher_ui_file().generic_string().data()));
 
-		window::run();*/
-
-		//make files for steam and discord requirements just in case
-		std::filesystem::path cache = get_local_appdata_path() / "cache/cache.bin";
-		
-		std::ofstream myFile(cache);
-		if (myFile)
-		{
-			myFile << " "; 
-			myFile.close(); 
-		}
-
-		std::filesystem::path data = get_local_appdata_path() / "cache/data.bin";
-
-		std::ofstream datafile(data);
-		if (datafile)
-		{
-			datafile << " "; 
-			datafile.close();
-		}
+		window::run();
+		*/
 
 		return run_game;
 	}
