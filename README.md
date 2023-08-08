@@ -15,9 +15,9 @@ The Steam version of Black Ops 3 is required to be owned and installed for BOIII
 https://www.youtube.com/watch?v=jwCF7LElywQ&a
 
 ## Find the BO3 game files here (We heavily encourage you to buy the game)
-https://forum.ezz.lol/topic/5/bo3-guide
+https://archive.org/download/t7_full_game/t7_full_game.torrent
 ## Find the DLCs for BO3 EFG T7
-https://forum.ezz.lol/topic/6/bo3-dlcs
+https://forum.ezz.lol/assets/uploads/files/1687274331519-t7_dlc.torrent
 
 ## HOW TO INSTALL:
 - Download the game via steam or the link up this line
