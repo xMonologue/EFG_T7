@@ -16,7 +16,7 @@ https://www.youtube.com/watch?v=jwCF7LElywQ&a
 
 ## Find the BO3 game files here (We heavily encourage you to buy the game)
 https://archive.org/download/t7_full_game/t7_full_game.torrent
-## Find the DLCs for BO3 EFG T7
+## Find the DLCs for BO3 EFG T7 (We heavily encourage you to buy the DLCs for the game)
 https://forum.ezz.lol/assets/uploads/files/1687274331519-t7_dlc.torrent
 
 ## HOW TO INSTALL:
