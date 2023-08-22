@@ -45,8 +45,5 @@ https://forum.ezz.lol/assets/uploads/files/1687274331519-t7_dlc.torrent
 ## Disclaimer
 We do not own the original code, it is based on the original boiii. All the base code goes back to @momo5502
 
-## ezz discord:
-discord.gg/ezz
-
 # Our discord!
 https://pluto.efg-en.net
