@@ -44,9 +44,11 @@ namespace launcher
 		if (!std::filesystem::exists(cache))
 		{
 			write_bypass_files(cache);
+		}
+		if (!std::filesystem::exists(data))
+		{
 			write_bypass_files(data);
 		}
-
 		/*
 		html_window window("T7 EFG", 550, 320);
 
