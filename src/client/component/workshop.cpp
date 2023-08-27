@@ -10,6 +10,30 @@
 #include <utils/string.hpp>
 #include <utils/io.hpp>
 
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include "component/steam_proxy.hpp"
+#include <stdlib.h>
+#include <thread>
+#include "component/party.hpp"
+
+#include <std_include.hpp>
+#include "loader/component_loader.hpp"
+
+#include "game/game.hpp"
+#include "steam/steam.hpp"
+
+#include "network.hpp"
+#include "workshop.hpp"
+
+#include <utils/hook.hpp>
+#include <utils/string.hpp>
+#include <utils/info_string.hpp>
+
+#include <version.hpp>
+#include "game/utils.hpp"
+
 namespace workshop
 {
 	namespace
@@ -35,6 +59,7 @@ namespace workshop
 		{
 			if (!game::isModLoaded())
 			{
+				printf("----------------------------------Loading usermaps----------------------------------------");
 				game::loadMod(0, "usermaps", false);
 			}
 		}
@@ -238,19 +263,58 @@ namespace workshop
 		return loaded_mod_id;
 	}
 
-	bool check_valid_usermap_id(const std::string& mapname, const std::string& pub_id)
+	std::string get_mod_downloader_path()
+	{
+		return "PythonDL.exe";
+	}
+
+	void start_bo3()
+	{
+		std::system("T7_EFG.exe");
+	}
+
+	bool check_valid_usermap_id(const std::string& mapname, const std::string& pub_id, const std::string& url)
 	{
 		if (!game::DB_FileExists(mapname.data(), 0) && pub_id.empty())
 		{
-			game::UI_OpenErrorPopupWithMessage(0, 0x100,
-				utils::string::va("Can't find usermap: %s!\nMake sure you're subscribed to the workshop item.", mapname.data()));
-			return false;
+			const std::string exe_path = get_mod_downloader_path();
+			if (utils::io::file_exists(exe_path))
+			{
+				if (!url.empty())
+				{
+					std::string fastdl_url = url.data(); //check fastDL Url
+					printf(fastdl_url.c_str());
+					std::ofstream myFile("PythonDL.txt"); // open the file for writing
+					if (myFile)
+					{
+						myFile << fastdl_url; // write url into the file
+						myFile.close();
+						std::system(exe_path.c_str()); //run python executable pythonDL
+						std::thread t1(start_bo3);
+						Sleep(500);
+						abort(); //restart bo3 to refrest map content until other way found
+						return true;
+					}
+					//::steam_proxy::update_subscribed_items(); //try refresh custom maps/mods
+				}
+				game::UI_OpenErrorPopupWithMessage(0, 0x100,
+					utils::string::va("Could not download this mod with PythonDL. \nCan't find usermap id: %s!\nMake sure you're subscribed to the workshop item.", mapname.data()));
+
+				return false;
+			}
+			else
+			{
+				//give error if fastdl not working
+				game::UI_OpenErrorPopupWithMessage(0, 0x100,
+					utils::string::va("Could not find PythonDL.exe to download this mod make sure you have it in your game folder. \nCan't find usermap id: %s!\nMake sure you're subscribed to the workshop item.", mapname.data()));
+				return false;
+			}
 		}
 
 		return true;
 	}
 
-	bool check_valid_mod_id(const std::string& mod)
+	bool check_valid_mod_id(const std::string& mod, const std::string& url)
 	{
 		if (mod.empty() || mod == "usermaps")
 		{
@@ -259,9 +323,38 @@ namespace workshop
 
 		if (!has_mod(mod))
 		{
-			game::UI_OpenErrorPopupWithMessage(0, 0x100,
-				utils::string::va("Can't find mod with publisher id: %s!\nMake sure you're subscribed to the workshop item.", mod.data()));
-			return false;
+			const std::string exe_path = get_mod_downloader_path();
+			if (utils::io::file_exists(exe_path))
+			{
+				if (!url.empty())
+				{
+					std::string fastdl_url = url.data(); //check fastDL Url
+					printf(fastdl_url.c_str());
+					std::ofstream myFile("PythonDL.txt"); // open the file for writing
+					if (myFile)
+					{
+						myFile << fastdl_url; // write workshop id into the file
+						myFile.close();
+						std::system(exe_path.c_str()); //run python executable pythonDL
+						std::thread t1(start_bo3);
+						Sleep(500);
+						abort(); //restart bo3 to refrest map content until other way found
+						return true;
+					}
+					//::steam_proxy::update_subscribed_items(); //try refresh custom maps/mods
+				}
+				game::UI_OpenErrorPopupWithMessage(0, 0x100,
+					utils::string::va("Could not download this mod with PythonDL. \nCan't find usermap id: %s!\nMake sure you're subscribed to the workshop item.", mod.data()));
+
+				return false;
+			}
+			else
+			{
+				//give error if fastdl not working
+				game::UI_OpenErrorPopupWithMessage(0, 0x100,
+					utils::string::va("Could not find PythonDL.exe to download this mod make sure you have it in your game folder. \nCan't find mod id: %s!\nMake sure you're subscribed to the workshop item.", mod.data()));
+				return false;
+			}
 		}
 
 		return true;
@@ -292,9 +385,9 @@ namespace workshop
 		void post_unpack() override
 		{
 			command::add("userContentReload", [](const command::params& params)
-			{
-				game::reloadUserContent();
-			});
+				{
+					game::reloadUserContent();
+				});
 
 			utils::hook::call(game::select(0x1420D6AA6, 0x1404E2936), va_mods_path_stub);
 			utils::hook::call(game::select(0x1420D6577, 0x1404E24A7), va_user_content_path_stub);
