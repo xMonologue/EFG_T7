@@ -190,6 +190,8 @@ namespace party
 			}
 
 			const auto mod_id = info.get("modId");
+			const auto FastDL = info.get("sv_wwwBaseURL"); //Check fastDL dvar for url
+
 
 			//const auto hostname = info.get("sv_hostname");
 			const auto playmode = info.get("playmode");
@@ -200,8 +202,8 @@ namespace party
 			{
 				const auto usermap_id = workshop::get_usermap_publisher_id(mapname);
 
-				if (workshop::check_valid_usermap_id(mapname, usermap_id) &&
-					workshop::check_valid_mod_id(mod_id))
+				if (workshop::check_valid_usermap_id(mapname, usermap_id, FastDL) &&
+					workshop::check_valid_mod_id(mod_id, FastDL))
 				{
 					if (is_connecting_to_dedi)
 					{
