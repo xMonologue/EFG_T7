@@ -21,7 +21,8 @@ https://forum.ezz.lol/assets/uploads/files/1687274331519-t7_dlc.torrent
 
 ## HOW TO INSTALL:
 - Download the game via steam or the link up this line
-- Download the ```EFG_T7.exe``` and ```discord_game_sdk.dll``` from [releases](https://github.com/xMonologue/EFG_T7/releases) (Place them in your bo3 root folder)
+- Download and Unzip the ```EFG_T7.zip``` from [releases](https://github.com/xMonologue/EFG_T7/releases) to your bo3 root folder.
+- Download the ```discord_game_sdk.dll``` from [releases](https://github.com/xMonologue/EFG_T7/releases) (Place it in your bo3 root folder)
 - ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/c484eb08-7e7b-455e-8452-ad9c0c6e78b2)
 
 - Download and Unzip the ```T7efg.zip``` found in [releases](https://github.com/xMonologue/EFG_T7/releases) to /appdata/local/ (Make sure its on your window user, type ```%localappdata%``` in your window search bar located on your desktop) ex. ```C:\Users\TestMachine\AppData\Local```
