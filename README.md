@@ -40,7 +40,7 @@ http://forum.ezz.lol/topic/6/bo3-dlcs
 
 ## Note & Credits
 - Thanks to <a href="https://github.com/shiversoftdev">@shiversoftdev</a> for providing the fixes from his <a href="https://github.com/shiversoftdev/t7patch">community patch</a>
-- Thank to @skwll from ezz for helping us setting up the master server and @dontknowletsplay for saving the original code!
+- Thank you to @dontknowletsplay for saving the original code and maintaining it!!
 - Just like ezz boii. We have our own master server! So join now! (Its our own master server, not the one from EZZ's client)
 
 ## Disclaimer
