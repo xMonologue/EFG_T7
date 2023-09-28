@@ -20,7 +20,6 @@ http://forum.ezz.lol/topic/6/bo3-dlcs
 ## HOW TO INSTALL:
 - Download the game via steam or the link up this line
 - Download and Unzip the ```EFG_T7.zip``` from [releases](https://github.com/xMonologue/EFG_T7/releases) to your bo3 root folder.
-- Download the ```discord_game_sdk.dll``` from [releases](https://github.com/xMonologue/EFG_T7/releases) (Place it in your bo3 root folder)
 - ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/e868d924-3a5c-4e37-9986-758747c5571d)
 
 
