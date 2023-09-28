@@ -20,9 +20,7 @@ http://forum.ezz.lol/topic/6/bo3-dlcs
 ## HOW TO INSTALL:
 - Download the game via steam or the link up this line
 - Download the ```EFG_T7.exe``` from [releases](https://github.com/xMonologue/EFG_T7/releases) to your bo3 root folder.
-- ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/eb6c6cef-a58e-4fc5-bb63-29e50b1d378f)
-)
-
+- ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/90ee96e3-d36f-4ea2-9960-1f9bd128a126)
 
 - Download and Unzip the ```T7efg.zip``` found in [releases](https://github.com/xMonologue/EFG_T7/releases) to /appdata/local/ (Make sure its on your window user, type ```%localappdata%``` in your window search bar located on your desktop) ex. ```C:\Users\TestMachine\AppData\Local```
   ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/b211ac18-5e3e-4203-a4b2-914081d908db)
