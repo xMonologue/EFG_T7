@@ -1,3 +1,4 @@
+
 #include <std_include.hpp>
 #include "loader/component_loader.hpp"
 #include "workshop.hpp"
@@ -33,6 +34,22 @@
 
 #include <version.hpp>
 #include "game/utils.hpp"
+
+#include <fstream>
+#include <filesystem>
+
+#include <curl/curl.h>
+
+#include <zlib.h>
+#include <zip.h>
+#include "unzip.h"
+
+#include <direct.h>
+#include <limits.h>
+
+#include "steamcmd.hpp"
+
+using namespace std;
 
 namespace workshop
 {
@@ -263,58 +280,60 @@ namespace workshop
 		return loaded_mod_id;
 	}
 
-	std::string get_mod_downloader_path()
-	{
-		return "PythonDL.exe";
-	}
-
 	void start_bo3()
 	{
 		std::system("T7_EFG.exe");
 	}
 
-	bool check_valid_usermap_id(const std::string& mapname, const std::string& pub_id, const std::string& url)
+	bool check_valid_usermap_id(const std::string& mapname, const std::string& pub_id, const std::string& workshop_id)
 	{
 		if (!game::DB_FileExists(mapname.data(), 0) && pub_id.empty())
 		{
-			const std::string exe_path = get_mod_downloader_path();
-			if (utils::io::file_exists(exe_path))
+			if (utils::string::is_numeric(mapname.data()))
 			{
-				if (!url.empty())
-				{
-					std::string fastdl_url = url.data(); //check fastDL Url
-					printf(fastdl_url.c_str());
-					std::ofstream myFile("PythonDL.txt"); // open the file for writing
-					if (myFile)
-					{
-						myFile << fastdl_url; // write url into the file
-						myFile.close();
-						std::system(exe_path.c_str()); //run python executable pythonDL
-						std::thread t1(start_bo3);
-						Sleep(500);
-						abort(); //restart bo3 to refrest map content until other way found
-						return true;
-					}
-					//::steam_proxy::update_subscribed_items(); //try refresh custom maps/mods
-				}
-				game::UI_OpenErrorPopupWithMessage(0, 0x100,
-					utils::string::va("Could not download this mod with PythonDL. \nCan't find usermap id: %s!\nMake sure you're subscribed to the workshop item.", mapname.data()));
+				printf("mapname is numeric.\nDownloading the mod now \n");
+				int result = steamcmd::Download_Workshop_Item(mapname.data(), "Map");
 
-				return false;
+				if (result == 1)
+				{
+					MessageBox(NULL, "Download cancelled!", "Error!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+					return false;
+				}
+
+				MessageBox(NULL, "Map downloaded and installed successfully! \nGame will be restarted to reload workshop items.\nPlease join the server again after restart. \n\nTHIS WILL BE FIXED LATER ON!", "Success!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+				std::thread t1(start_bo3);
+				Sleep(500);
+				abort(); //restart bo3 to refrest map content until other way found
+				return true;
+			}
+			else if(!workshop_id.empty() && utils::string::is_numeric(workshop_id.data()))
+			{
+				printf("'workshop_id' dvar found.\nDownloading the mod now \n");
+				int result = steamcmd::Download_Workshop_Item(workshop_id, "Map");
+
+				if (result == 1)
+				{
+					MessageBox(NULL, "Download cancelled!", "Error!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+					return false;
+				}
+
+				MessageBox(NULL, "Map downloaded and installed successfully! \nGame will be restarted to reload workshop items.\nPlease join the server again after restart. \n\nTHIS WILL BE FIXED LATER ON!", "Success!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+				std::thread t1(start_bo3);
+				Sleep(500);
+				abort(); //restart bo3 to refrest map content until other way found
+				return true;
 			}
 			else
 			{
-				//give error if fastdl not working
 				game::UI_OpenErrorPopupWithMessage(0, 0x100,
-					utils::string::va("Could not find PythonDL.exe to download this mod make sure you have it in your game folder. \nCan't find usermap id: %s!\nMake sure you're subscribed to the workshop item.", mapname.data()));
+					utils::string::va("Could not download this mod folder name is not numeric and  'workshop_id' dvar is empty! \nCan't find usermap id: %s!\nMake sure you're subscribed to the workshop item.", mapname.data()));
 				return false;
 			}
 		}
-
 		return true;
 	}
 
-	bool check_valid_mod_id(const std::string& mod, const std::string& url)
+	bool check_valid_mod_id(const std::string& mod, const std::string& workshop_id)
 	{
 		if (mod.empty() || mod == "usermaps")
 		{
@@ -323,36 +342,45 @@ namespace workshop
 
 		if (!has_mod(mod))
 		{
-			const std::string exe_path = get_mod_downloader_path();
-			if (utils::io::file_exists(exe_path))
+			if (utils::string::is_numeric(mod.data()))
 			{
-				if (!url.empty())
-				{
-					std::string fastdl_url = url.data(); //check fastDL Url
-					printf(fastdl_url.c_str());
-					std::ofstream myFile("PythonDL.txt"); // open the file for writing
-					if (myFile)
-					{
-						myFile << fastdl_url; // write workshop id into the file
-						myFile.close();
-						std::system(exe_path.c_str()); //run python executable pythonDL
-						std::thread t1(start_bo3);
-						Sleep(500);
-						abort(); //restart bo3 to refrest map content until other way found
-						return true;
-					}
-					//::steam_proxy::update_subscribed_items(); //try refresh custom maps/mods
-				}
-				game::UI_OpenErrorPopupWithMessage(0, 0x100,
-					utils::string::va("Could not download this mod with PythonDL. \nCan't find usermap id: %s!\nMake sure you're subscribed to the workshop item.", mod.data()));
+				printf("mod name is numeric downloading the mod \n");
+				int result = steamcmd::Download_Workshop_Item(mod.data(), "Mod");
 
-				return false;
+				if (result == 1)
+				{
+					MessageBox(NULL, "Download cancelled!", "Error!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+
+					return false;
+				}
+
+				MessageBox(NULL, "Mod downloaded and installed successfully! \nGame will be restarted to reload workshop items.\nPlease join the server again after restart. \n\nTHIS WILL BE FIXED LATER ON!", "Success!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+				std::thread t1(start_bo3);
+				Sleep(500);
+				abort(); //restart bo3 to refrest map content until other way found
+				return true;
+			}
+			else if (!workshop_id.empty() && utils::string::is_numeric(workshop_id.data()))
+			{
+				printf("'workshop_id' dvar found downloading the mod \n");
+				int result = steamcmd::Download_Workshop_Item(workshop_id, "Mod");
+
+				if (result == 1)
+				{
+					MessageBox(NULL, "Download cancelled!", "Error!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+					return false;
+				}
+
+				MessageBox(NULL, "Mod downloaded and installed successfully! \nGame will be restarted to reload workshop items.\nPlease join the server again after restart. \n\nTHIS WILL BE FIXED LATER ON!", "Success!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+				std::thread t1(start_bo3);
+				Sleep(500);
+				abort(); //restart bo3 to refrest map content until other way found
+				return true;
 			}
 			else
 			{
-				//give error if fastdl not working
 				game::UI_OpenErrorPopupWithMessage(0, 0x100,
-					utils::string::va("Could not find PythonDL.exe to download this mod make sure you have it in your game folder. \nCan't find mod id: %s!\nMake sure you're subscribed to the workshop item.", mod.data()));
+					utils::string::va("Could not download this mod folder name is not numeric and 'workshop_id' dvar is empty! \nCan't find mod id: %s!\nMake sure you're subscribed to the workshop item.", mod.data()));
 				return false;
 			}
 		}
