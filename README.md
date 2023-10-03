@@ -30,7 +30,7 @@ http://forum.ezz.lol/topic/6/bo3-dlcs
 - **Master server can be changed using master_server.txt file in your root folder**. 
 
 - EXAMPLE HOW TO CHANGE MASTER SERVER:
- ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/e008ce5b-1a65-416b-9ee3-90290f65d2f8)
+- ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/e008ce5b-1a65-416b-9ee3-90290f65d2f8)
 
 ## Writeups & Articles
 
