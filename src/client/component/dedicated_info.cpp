@@ -8,11 +8,15 @@
 #include "console.hpp"
 
 #include <utils/string.hpp>
+#include "WorkshopID.hpp"
+#include <thread>
 
 namespace dedicated_info
 {
 	namespace
 	{
+		bool mapname_found = false;
+
 		void set_server_info_in_console_title()
 		{
 			const auto sv_running = game::Dvar_FindVar("sv_running");
@@ -27,6 +31,12 @@ namespace dedicated_info
 
 			const auto mapname = game::get_dvar_string("mapname");
 
+			if (!mapname.empty() && !mapname_found)
+			{
+				printf("%d \n", mapname_found);
+				WorkshopID::get_workshop_id_from_json();
+				mapname_found = true;
+			}
 			const std::string window_text = utils::string::va("%s on %s [%zu/%zu] (%zu)",
 															  clean_server_name,
 			                                                  mapname.data(),
@@ -43,9 +53,11 @@ namespace dedicated_info
 	public:
 		void post_unpack() override
 		{
+			
 			scheduler::loop([]()
 			{
 				set_server_info_in_console_title();
+
 			}, scheduler::pipeline::main, 1s);
 		}
 	};
