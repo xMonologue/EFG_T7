@@ -25,12 +25,12 @@ http://forum.ezz.lol/topic/6/bo3-dlcs
 - Download and Unzip the ```T7efg.zip``` found in [releases](https://github.com/xMonologue/EFG_T7/releases) to /appdata/local/ (Make sure its on your window user, type ```%localappdata%``` in your window search bar located on your desktop) ex. ```C:\Users\TestMachine\AppData\Local```
   ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/b211ac18-5e3e-4203-a4b2-914081d908db)
 
-- Master server can be changed using master_server.txt file in your root folder. 
-- EXAMPLE:
-- ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/e008ce5b-1a65-416b-9ee3-90290f65d2f8)
-
 - Run the game and enjoy!
 
+- **Master server can be changed using master_server.txt file in your root folder**. 
+
+- EXAMPLE HOW TO CHANGE MASTER SERVER:
+ ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/e008ce5b-1a65-416b-9ee3-90290f65d2f8)
 
 ## Writeups & Articles
 
