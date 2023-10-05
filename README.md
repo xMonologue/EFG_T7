@@ -14,8 +14,9 @@ https://www.youtube.com/watch?v=jwCF7LElywQ&a
 ## Follow the instruction here to have the updated game. Do not forget to replace ezz_boiii.exe by T7_EFG.exe (We heavily encourage you to buy the game)
 <img src="https://cdn.discordapp.com/attachments/1136045984154140802/1147286036511207544/efg_t7_instruction.png">
 http://forum.ezz.lol/topic/5/bo3-guide
-## Find the DLCs for BO3 EFG T7 (We heavily encourage you to buy the DLCs for the game)
-http://forum.ezz.lol/topic/6/bo3-dlcs
+## Buy the game. We won't provide any torrent to respect Activision's Propriety. Please buy the game
+
+Disclaimer: This project is not meant to harm in any ways Activision's propriety or Treyarch. This project does not require you to give us money and we removed the patreon paywall from Momo. This project is meant for education purposes only and we are not making any profit from this project. All rights goes to Activision and Treyarch.
 
 ## HOW TO INSTALL:
 - Download the game via steam or the link up this line
