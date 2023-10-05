@@ -8,18 +8,17 @@ The Steam version of Black Ops 3 is required to be owned and installed for BOIII
 
 <img src="https://cdn.discordapp.com/attachments/623352372998963233/1131209997724942457/EFG_Black_Logo_512x512.gif">
 
-## Youtube tutorial can be found here!
-https://www.youtube.com/watch?v=jwCF7LElywQ&a
+## Youtube tutorial can be found here
+https://youtu.be/jwCF7LElywQ?si=O2s3MjunMcisRU1T
 
-## Follow the instruction here to have the updated game. Do not forget to replace ezz_boiii.exe by T7_EFG.exe (We heavily encourage you to buy the game)
-<img src="https://cdn.discordapp.com/attachments/1136045984154140802/1147286036511207544/efg_t7_instruction.png">
-http://forum.ezz.lol/topic/5/bo3-guide
-## Buy the game. We won't provide any torrent to respect Activision's Propriety. Please buy the game
+## Buy the game. 
+
+We won't provide any torrent to respect Activision's Propriety. Please buy the game
 
 Disclaimer: This project is not meant to harm in any ways Activision's propriety or Treyarch. This project does not require you to give us money and we removed the patreon paywall from Momo. This project is meant for education purposes only and we are not making any profit from this project. All rights goes to Activision and Treyarch.
 
 ## HOW TO INSTALL:
-- Download the game via steam or the link up this line
+- Download the game via steam
 - Download the ```EFG_T7.exe``` from [releases](https://github.com/xMonologue/EFG_T7/releases) to your bo3 root folder.
 - ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/90ee96e3-d36f-4ea2-9960-1f9bd128a126)
 
