@@ -27,7 +27,7 @@ Disclaimer: This project is not meant to harm in any ways Activision's propriety
 
 - Run the game and enjoy!
 
-- **Master server can be changed by making master_server.txt file in your root folder which has master server address inside**. 
+- **Master server can be changed by making master_server.txt file in your Black ops 3 game root folder which has master server address inside**. 
 
 - EXAMPLE HOW TO CHANGE MASTER SERVER:
 - ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/e008ce5b-1a65-416b-9ee3-90290f65d2f8)
