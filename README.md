@@ -11,6 +11,9 @@ The Steam version of Black Ops 3 is required to be owned and installed for BOIII
 ## Youtube tutorial can be found here
 https://youtu.be/jwCF7LElywQ?si=O2s3MjunMcisRU1T
 
+## Learn how to host a EFG T7 server on your VPS/Dedicated Server
+https://github.com/xMonologue/EFG_T7/wiki/How-to-host-a-EFG-T7-Server%3F
+
 ## Buy the game. 
 
 We won't provide any torrent to respect Activision's Propriety. Please buy the game
