@@ -281,7 +281,7 @@ int main()
 
 			if (!utils::io::file_exists(launcher::get_launcher_ui_file().generic_wstring()))
 			{
-				throw std::runtime_error("T7 EFG needs an active internet connection for the first time you launch it.\nYou can manually copy t7efg folder to localappdata to fix this error.");
+				throw std::runtime_error("T7efg files could not be found. \nCopy T7efg folder to localappdata to fix this error.");
 			}
 
 			const auto client_binary = "BlackOps3.exe"s;
