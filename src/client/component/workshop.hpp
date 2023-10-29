@@ -2,6 +2,8 @@
 
 namespace workshop
 {
+	extern bool DownloadingGlobal;
+
 	std::string get_usermap_publisher_id(const std::string& folder_name);
 	std::string get_mod_publisher_id();
 	std::string get_mod_resized_name();
