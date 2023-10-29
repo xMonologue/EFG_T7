@@ -36,11 +36,12 @@ Disclaimer: This project is not meant to harm in any ways Activision's propriety
 - ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/e008ce5b-1a65-416b-9ee3-90290f65d2f8)
 
 ## BUILD IN WORKSHOP DOWNLOADER:
+- (Client restart is not required anymore after map download. User can also play while downloading map in background now.)
 - Added workshop mod dowloader which is using steamcmd to download mod from steam workshop if mod is not found while joining server. For this option to work server host has to be using EFG T7 client to host the server and add ```set workshop_id "your item workshop id"``` in to server_zm.cfg which can be found in zone folder or host can start server once and let it fully start for the launcher to find workshop id of loaded mod. After this server has to be restarted again for server_zm.cfg being loaded with new workshop id which was written in on first start.
 - **Image of steamcmd downloading item**
 - ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/8d48ccc4-c2f5-415a-b792-ba39770d052a)
-- **Client will be restarted after mod has been downloaded to refresh workshop items.** (Did not have time to figure out how it is done)
-- ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/d75f2817-827a-4e3a-a4f1-c478bd7fb05c)
+
+
 
 
 ## Writeups & Articles
