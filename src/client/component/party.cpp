@@ -14,6 +14,7 @@
 #include <utils/info_string.hpp>
 #include <utils/cryptography.hpp>
 #include <utils/concurrency.hpp>
+
 #include "steamcmd.hpp"
 #include <thread>
 
