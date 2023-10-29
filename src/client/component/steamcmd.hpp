@@ -43,7 +43,7 @@ namespace steamcmd
 	size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream);
 	int setup_steamcmd();
 	void moveFolder(const std::string& sourceFolderPath, const std::string& destinationFolderPath);
-	int Download_Workshop_Item(std::string workshop_id, std::string modtype);
+	void initialize_download(std::string workshop_id, std::string modtype);
 }
 
 #endif // STEAMCMD_HPP
