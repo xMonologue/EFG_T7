@@ -280,55 +280,36 @@ namespace workshop
 		return loaded_mod_id;
 	}
 
-	void start_bo3()
-	{
-		std::system("T7_EFG.exe");
-	}
+	extern bool DownloadingGlobal = false;
 
 	bool check_valid_usermap_id(const std::string& mapname, const std::string& pub_id, const std::string& workshop_id)
 	{
 		if (!game::DB_FileExists(mapname.data(), 0) && pub_id.empty())
 		{
+			if (workshop::DownloadingGlobal)
+			{
+				MessageBox(NULL, "You are already downloading map on background \nYou can download only one map at once.", "Warning!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+				return false;
+			}
+
 			if (utils::string::is_numeric(mapname.data()))
 			{
-				printf("mapname is numeric.\nDownloading the mod now \n");
-				int result = steamcmd::Download_Workshop_Item(mapname.data(), "Map");
-
-				if (result == 1)
-				{
-					MessageBox(NULL, "Download cancelled!", "Error!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
-					return false;
-				}
-
-				MessageBox(NULL, "Map downloaded and installed successfully! \nGame will be restarted to reload workshop items.\nPlease join the server again after restart. \n\nTHIS WILL BE FIXED LATER ON!", "Success!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
-				std::thread t1(start_bo3);
-				Sleep(500);
-				abort(); //restart bo3 to refrest map content until other way found
-				return true;
+				printf("mapname is numeric downloading the map now \n");
+				std::thread threaded(steamcmd::initialize_download, mapname, "Map");
+				threaded.detach();
 			}
-			else if(!workshop_id.empty() && utils::string::is_numeric(workshop_id.data()))
+			else if (!workshop_id.empty() && utils::string::is_numeric(workshop_id.data()))
 			{
-				printf("'workshop_id' dvar found.\nDownloading the mod now \n");
-				int result = steamcmd::Download_Workshop_Item(workshop_id, "Map");
-
-				if (result == 1)
-				{
-					MessageBox(NULL, "Download cancelled!", "Error!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
-					return false;
-				}
-
-				MessageBox(NULL, "Map downloaded and installed successfully! \nGame will be restarted to reload workshop items.\nPlease join the server again after restart. \n\nTHIS WILL BE FIXED LATER ON!", "Success!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
-				std::thread t1(start_bo3);
-				Sleep(500);
-				abort(); //restart bo3 to refrest map content until other way found
-				return true;
+				printf("'workshop_id' dvar found.\nDownloading the map now \n");
+				std::thread threaded(steamcmd::initialize_download, workshop_id, "Map");
+				threaded.detach();
 			}
 			else
 			{
 				game::UI_OpenErrorPopupWithMessage(0, 0x100,
 					utils::string::va("Could not download this mod folder name is not numeric and  'workshop_id' dvar is empty! \nCan't find usermap id: %s!\nMake sure you're subscribed to the workshop item.", mapname.data()));
-				return false;
 			}
+			return false;
 		}
 		return true;
 	}
@@ -342,47 +323,30 @@ namespace workshop
 
 		if (!has_mod(mod))
 		{
+			if (workshop::DownloadingGlobal)
+			{
+				MessageBox(NULL, "You are already downloading mod on background \nYou can download only one mod at once.", "Warning!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+				return false;
+			}
+
 			if (utils::string::is_numeric(mod.data()))
 			{
 				printf("mod name is numeric downloading the mod \n");
-				int result = steamcmd::Download_Workshop_Item(mod.data(), "Mod");
-
-				if (result == 1)
-				{
-					MessageBox(NULL, "Download cancelled!", "Error!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
-
-					return false;
-				}
-
-				MessageBox(NULL, "Mod downloaded and installed successfully! \nGame will be restarted to reload workshop items.\nPlease join the server again after restart. \n\nTHIS WILL BE FIXED LATER ON!", "Success!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
-				std::thread t1(start_bo3);
-				Sleep(500);
-				abort(); //restart bo3 to refrest map content until other way found
-				return true;
+				std::thread threaded(steamcmd::initialize_download, mod, "Mod");
+				threaded.detach();
 			}
 			else if (!workshop_id.empty() && utils::string::is_numeric(workshop_id.data()))
 			{
 				printf("'workshop_id' dvar found downloading the mod \n");
-				int result = steamcmd::Download_Workshop_Item(workshop_id, "Mod");
-
-				if (result == 1)
-				{
-					MessageBox(NULL, "Download cancelled!", "Error!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
-					return false;
-				}
-
-				MessageBox(NULL, "Mod downloaded and installed successfully! \nGame will be restarted to reload workshop items.\nPlease join the server again after restart. \n\nTHIS WILL BE FIXED LATER ON!", "Success!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
-				std::thread t1(start_bo3);
-				Sleep(500);
-				abort(); //restart bo3 to refrest map content until other way found
-				return true;
+				std::thread threaded(steamcmd::initialize_download, workshop_id, "Mod");
+				threaded.detach();
 			}
 			else
 			{
 				game::UI_OpenErrorPopupWithMessage(0, 0x100,
 					utils::string::va("Could not download this mod folder name is not numeric and 'workshop_id' dvar is empty! \nCan't find mod id: %s!\nMake sure you're subscribed to the workshop item.", mod.data()));
-				return false;
 			}
+			return false;
 		}
 
 		return true;
@@ -416,13 +380,15 @@ namespace workshop
 				{
 					game::reloadUserContent();
 				});
-
+			
 			utils::hook::call(game::select(0x1420D6AA6, 0x1404E2936), va_mods_path_stub);
 			utils::hook::call(game::select(0x1420D6577, 0x1404E24A7), va_user_content_path_stub);
 
 			load_usermap_hook.create(game::select(0x1420D5700, 0x1404E18B0), load_usermap_stub);
 			utils::hook::call(game::select(0x1420D67F5, 0x1404E25F2), load_usermap_content_stub);
-
+			utils::hook::call(0x1420D6745_g, load_mod_content_stub);
+			utils::hook::call(0x14135CD84_g, has_workshop_item_stub);
+			setup_server_map_hook.create(0x14135CD20_g, setup_server_map_stub);
 			if (game::is_server())
 			{
 				utils::hook::jump(0x1404E2635_g, load_mod_content_stub);
@@ -432,6 +398,7 @@ namespace workshop
 			utils::hook::call(0x1420D6745_g, load_mod_content_stub);
 			utils::hook::call(0x14135CD84_g, has_workshop_item_stub);
 			setup_server_map_hook.create(0x14135CD20_g, setup_server_map_stub);
+			
 		}
 	};
 }
