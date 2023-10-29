@@ -34,52 +34,6 @@
 
 namespace steamcmd
 {
-	/*
-	void printProgressBar();
-
-	void printProgressBar()
-	{
-		// Create a new console window
-		AllocConsole();
-		FILE* consoleOut;
-		freopen_s(&consoleOut, "CONOUT$", "w", stdout);
-
-		int total = 100;
-		int barWidth = 50;
-		int progress;
-		std::cout << "**********************************************************" << std::endl;
-		std::cout << "*                                                        *" << std::endl;
-		std::cout << "*                DOWNLOADING WORKSHOP ITEM               *" << std::endl;
-		std::cout << "*                                                        *" << std::endl;
-		std::cout << "**********************************************************" << std::endl;
-		std::cout << " " << std::endl;
-
-		for (int x = 0; x <= total; ++x)
-		{
-			progress = x;
-			float percent = static_cast<float>(progress) / total;
-			int barLength = static_cast<int>(percent * barWidth);
-
-			std::cout << "[";
-			for (int i = 0; i < barWidth; ++i)
-			{
-				if (i < barLength)
-					std::cout << "=";
-				else
-					std::cout << " ";
-			}
-			std::cout << "] " << static_cast<int>(percent * 100) << "%" << "\r";
-			std::cout.flush(); // Flush the output to update the console
-
-			std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Sleep for a short duration to control the progress speed
-		}
-
-		std::cout << std::endl;
-
-		// Close the console window when done
-		FreeConsole();
-	}*/
-
     int start_new_process(const char* exePath, bool Hide_Window, bool waittill_done, const char* arguments)
 	{
 		std::string commandLine = std::string(exePath) + " " + std::string(arguments);
@@ -108,14 +62,11 @@ namespace steamcmd
 			&pi
 		))
 		{
-			//std::string message = ;
-			//std::thread progressBarThread(printProgressBar);
 			if (waittill_done)
 			{
 				WaitForSingleObject(pi.hProcess, INFINITE);
 			}
-			//progressBarThread.join();
-
+			
 			DWORD exitCode;
 			if (GetExitCodeProcess(pi.hProcess, &exitCode))
 			{
