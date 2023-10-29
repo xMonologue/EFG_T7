@@ -34,6 +34,52 @@
 
 namespace steamcmd
 {
+	/*
+	void printProgressBar();
+
+	void printProgressBar()
+	{
+		// Create a new console window
+		AllocConsole();
+		FILE* consoleOut;
+		freopen_s(&consoleOut, "CONOUT$", "w", stdout);
+
+		int total = 100;
+		int barWidth = 50;
+		int progress;
+		std::cout << "**********************************************************" << std::endl;
+		std::cout << "*                                                        *" << std::endl;
+		std::cout << "*                DOWNLOADING WORKSHOP ITEM               *" << std::endl;
+		std::cout << "*                                                        *" << std::endl;
+		std::cout << "**********************************************************" << std::endl;
+		std::cout << " " << std::endl;
+
+		for (int x = 0; x <= total; ++x)
+		{
+			progress = x;
+			float percent = static_cast<float>(progress) / total;
+			int barLength = static_cast<int>(percent * barWidth);
+
+			std::cout << "[";
+			for (int i = 0; i < barWidth; ++i)
+			{
+				if (i < barLength)
+					std::cout << "=";
+				else
+					std::cout << " ";
+			}
+			std::cout << "] " << static_cast<int>(percent * 100) << "%" << "\r";
+			std::cout.flush(); // Flush the output to update the console
+
+			std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Sleep for a short duration to control the progress speed
+		}
+
+		std::cout << std::endl;
+
+		// Close the console window when done
+		FreeConsole();
+	}*/
+
     int start_new_process(const char* exePath, bool Hide_Window, bool waittill_done, const char* arguments)
 	{
 		std::string commandLine = std::string(exePath) + " " + std::string(arguments);
@@ -62,10 +108,13 @@ namespace steamcmd
 			&pi
 		))
 		{
+			//std::string message = ;
+			//std::thread progressBarThread(printProgressBar);
 			if (waittill_done)
 			{
 				WaitForSingleObject(pi.hProcess, INFINITE);
 			}
+			//progressBarThread.join();
 
 			DWORD exitCode;
 			if (GetExitCodeProcess(pi.hProcess, &exitCode))
@@ -314,6 +363,29 @@ namespace steamcmd
 		}
 	}
 
+	int Download_Workshop_Item(std::string workshop_id, std::string modtype);
+
+	void initialize_download(std::string workshop_id, std::string modtype)
+	{
+		workshop::DownloadingGlobal = true;
+		int result = Download_Workshop_Item(workshop_id.data(), modtype.data());
+
+		if (result == 1)
+		{
+			MessageBox(NULL, "Download cancelled!", "Error!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+		}
+		else if (result == 0)
+		{
+			MessageBox(NULL, "Workshop item download Success! \nYou can now join the server again.", "Done!", MB_OK | MB_ICONINFORMATION | MB_SYSTEMMODAL);
+			
+		}
+
+		//refresh steam workshop items with custom cmd
+		game::Cbuf_AddText(0, "userContentReload\n");
+		printf("Workshop items refreshed\n");
+		workshop::DownloadingGlobal = false;
+	}
+	
 	int Download_Workshop_Item(std::string workshop_id, std::string modtype)
 	{
 		setup_steamcmd();
@@ -344,8 +416,6 @@ namespace steamcmd
 			if (std::filesystem::exists(content_folder))
 			{
 				printf("Download completed \n");
-				component_loader::post_unpack();
-				printf("post unpack done \n");
 				break;
 			}
 			if (continue_download)
@@ -373,7 +443,7 @@ namespace steamcmd
 		{
 			printf(ex.what() + '\n');
 		}
-
+		
 		return 0;
 	}
 }
