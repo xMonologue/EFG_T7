@@ -42,7 +42,7 @@ jobs:
         uses: ammaraskar/msvc-problem-matcher@master
 
       - name: Build ${{matrix.configuration}}
-        run: msbuild /m /v:minimal /p:Configuration=${{matrix.configuration}} /p:Platform=x64 build/T7 Online.sln
+        run: msbuild /m /v:minimal /p:Configuration=${{matrix.configuration}} /p:Platform=x64 build/T7_EFG.sln
 
       - name: Upload ${{matrix.configuration}} symbols
         if: matrix.configuration == 'Release' && github.repository_owner == 'momo5502' && github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
@@ -50,7 +50,7 @@ jobs:
         with:
           name: ${{matrix.configuration}} Symbols
           path: |
-            build/bin/x64/${{matrix.configuration}}/T7 Online.pdb
+            build/bin/x64/${{matrix.configuration}}/T7_EFG.pdb
 
       - name: Upload ${{matrix.configuration}} binary
         if: matrix.configuration == 'Release' && github.repository_owner == 'momo5502' && github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
@@ -58,7 +58,7 @@ jobs:
         with:
           name: ${{matrix.configuration}} Binary
           path: |
-            build/bin/x64/${{matrix.configuration}}/T7 Online.exe
+            build/bin/x64/${{matrix.configuration}}/T7_EFG.exe
 
       - name: Upload ${{matrix.configuration}} data artifacts
         if: matrix.configuration == 'Release' && github.repository_owner == 'momo5502' && github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
