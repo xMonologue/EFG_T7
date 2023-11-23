@@ -20,7 +20,7 @@ We won't provide any torrent to respect Activision's Propriety. Please buy the g
 
 Disclaimer: This project is not meant to harm in any ways Activision's propriety or Treyarch. This project does not require you to give us money and we removed the patreon paywall from Momo. This project is meant for education purposes only and we are not making any profit from this project. All rights goes to Activision and Treyarch.
 
-## HOW TO INSTALL:
+## HOW TO INSTALL (Window):
 - Download the game via steam
 - Download the ```EFG_T7.exe``` from [releases](https://github.com/xMonologue/EFG_T7/releases) to your bo3 root folder.
 - ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/90ee96e3-d36f-4ea2-9960-1f9bd128a126)
@@ -30,6 +30,10 @@ Disclaimer: This project is not meant to harm in any ways Activision's propriety
 
 - Run the game and enjoy!
 
+## How to install (Linux)
+-  [How to install on Linux](https://github.com/xMonologue/EFG_T7/wiki/How-to-run-EFG-T7-on-Linux)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 - **Master server can be changed by making master_server.txt file in your Black ops 3 game root folder which has master server address inside**. 
 
 - EXAMPLE HOW TO CHANGE MASTER SERVER:
