@@ -1,7 +1,7 @@
 [![patreon](https://img.shields.io/badge/Patreon-support-red.svg?logo=patreon)](https://www.patreon.com/efgservers)
 
 
-## EFG T7 IS DROPPING SUPPORT. NEW CLIENT MADE BY MOMO & OLD DEV FOR BO3/T7 OUT NOW!
+## EFG T7 IS DROPPING SUPPORT. NEW CLIENT MADE BY MOMO & OLD DEVS FOR BO3/T7 OUT NOW!
 Download here:
 https://alterware.dev/
 
