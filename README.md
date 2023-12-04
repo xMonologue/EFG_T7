@@ -1,6 +1,14 @@
 [![patreon](https://img.shields.io/badge/Patreon-support-red.svg?logo=patreon)](https://www.patreon.com/efgservers)
 
 
+## EFG T7 IS DROPPING SUPPORT. NEW CLIENT MADE BY MOMO & OLD DEV FOR BO3/T7 OUT NOW!
+Download here:
+https://alterware.dev/
+
+Source code of their client:
+https://github.com/alterware/t7x
+
+
 # What is EFG T7 MONOLOGUE????
 
 EFG T7 is a game modification for Call of Duty: Black Ops 3 based on boiii.  
