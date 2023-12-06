@@ -1,5 +1,8 @@
 [![patreon](https://img.shields.io/badge/Patreon-support-red.svg?logo=patreon)](https://www.patreon.com/efgservers)
 
+## We are looking for contributor, if you want to be a contributor to the project make a #ticket-efg on our discord @
+https://pluto.efg-en.net
+
 # What is EFG T7 MONOLOGUE????
 
 EFG T7 is a game modification for Call of Duty: Black Ops 3 based on boiii.  
