@@ -6,7 +6,9 @@ https://pluto.efg-en.net
 # What is EFG T7 MONOLOGUE????
 
 EFG T7 is a game modification for Call of Duty: Black Ops 3 based on boiii.  
-The Steam version of Black Ops 3 is **not* required to be owned and installed for EFG T7 (BOIII) to work (We do not condone piracy but there is no steam DRM in place to play this client). You can get it from <a href="https://store.steampowered.com/app/311210/Call_of_Duty_Black_Ops_III/">here</a>.
+The Steam version of Black Ops 3 is **not** required to be owned and installed for EFG T7 (BOIII) to work (We do not condone piracy but there is no steam DRM in place to play this client). We strongly encourage people to buy the game.
+
+You can get it from <a href="https://store.steampowered.com/app/311210/Call_of_Duty_Black_Ops_III/">here</a>.
 
 ## Note: The discord/patreon requirement from momo was removed
 
