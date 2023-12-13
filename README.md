@@ -36,7 +36,7 @@ Disclaimer: This project is not meant to harm in any ways Activision's propriety
 
 - Run the game
 
-- **OPTIONAL** run the newest RCE patch after launching the game found here, please note that it will patch most exploits, not all of them. It can be found [here](https://github.com/xMonologue/EFG_T7/releases/download/efg/t7rcepatch_2.02.exe)]
+- **OPTIONAL** run the newest RCE patch after launching the game found here, please note that it will patch most exploits, not all of them. It can be found [here](https://github.com/xMonologue/EFG_T7/releases/download/efg/t7rcepatch_2.02.exe)
 
 ## How to install (Linux)
 -  [How to install on Linux](https://github.com/xMonologue/EFG_T7/wiki/How-to-run-EFG-T7-on-Linux)
