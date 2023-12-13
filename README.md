@@ -34,7 +34,9 @@ Disclaimer: This project is not meant to harm in any ways Activision's propriety
 - Download and Unzip the ```T7efg.zip``` found in [releases](https://github.com/xMonologue/EFG_T7/releases) to /appdata/local/ (Make sure its on your window user, type ```%localappdata%``` in your window search bar located on your desktop) ex. ```C:\Users\TestMachine\AppData\Local```
   ![kuva](https://github.com/xMonologue/EFG_T7/assets/77815199/b211ac18-5e3e-4203-a4b2-914081d908db)
 
-- Run the game and enjoy!
+- Run the game
+
+- **OPTIONAL** run the newest RCE patch after launching the game found here, please note that it will patch most exploits, not all of them. It can be found [here](https://github.com/xMonologue/EFG_T7/releases/download/efg/t7rcepatch_2.02.exe)]
 
 ## How to install (Linux)
 -  [How to install on Linux](https://github.com/xMonologue/EFG_T7/wiki/How-to-run-EFG-T7-on-Linux)
