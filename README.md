@@ -1,7 +1,6 @@
 [![patreon](https://img.shields.io/badge/Patreon-support-red.svg?logo=patreon)](https://www.patreon.com/efgservers)
 
-## We are looking for contributors, if you want to be a contributor to the EFG T7 project make a #ticket-efg on our discord @
-https://pluto.efg-en.net
+## This repo will be put on hold until we found new contributors to our project, our master server will still be online. Please reach us on discord ad https://dc.efg-en.net and make a #ticket-efg if you want to be part of it
 
 # What is EFG T7 MONOLOGUE????
 
@@ -70,4 +69,4 @@ Note: Your anti virus might think its a false positive, please check what its do
 We do not own the original code, it is based on the original boiii. All the base code goes back to @momo5502
 
 # Our discord!
-https://pluto.efg-en.net
+https://dc.efg-en.net
