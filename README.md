@@ -1,6 +1,7 @@
 [![patreon](https://img.shields.io/badge/Patreon-support-red.svg?logo=patreon)](https://www.patreon.com/efgservers)
 
-## This repo will be put on hold until we found new contributors to our project, our master server will still be online. Please reach us on discord ad https://dc.efg-en.net and make a #ticket-efg if you want to be part of it
+## This repo Is not getting worked on anymore, please use Ezz-boiii. For personal reasons I won't redirect my master server to alterware's master server which mean you won't find any servers in the list. Please use ezz boiii
+https://github.com/Ezz-lol/boiii-free
 
 # What is EFG T7 MONOLOGUE????
 
